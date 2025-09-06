@@ -45,7 +45,30 @@ jobs:
         continue-on-error: true
         working-directory: environment
 
-      - name: Terraform Validate
+      
+  apply:
+    runs-on: self-hosted
+    environment: dev
+    steps:      
+      - name: Checkout
+        uses: actions/checkout@v5.0.0
+
+      - name: Azure Login
+        uses: Azure/login@v2.3.0
+        with:
+          # Paste output of `az ad sp create-for-rbac` as value of secret variable: AZURE_CREDENTIALS
+          client-id: 74025b64-fb08-467b-9d03-2146941c696f
+          # TenantId of the Azure Service principal created.
+          tenant-id: 25da0254-8640-4e13-9016-d3428661a477
+          # Azure subscriptionId
+          subscription-id: 972b29e5-b4b2-4f43-b814-02879737840d
+
+      - name: Terraform Init
+        id: init
+        run: terraform init -input=false
+        working-directory: environment    
+    
+      - name: Terraform Apply
         id: Apply
         run: terraform apply -auto-approve
         working-directory: environment
