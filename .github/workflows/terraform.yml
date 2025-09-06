@@ -2,6 +2,10 @@ name: "terraform practise"
 
 on: workflow_dispatch
 
+permissions:
+  id-token: write
+  
+
 jobs:
   init-plan-fmt:
     runs-on: self-hosted
