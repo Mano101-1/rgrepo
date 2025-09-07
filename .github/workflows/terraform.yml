@@ -23,6 +23,15 @@ jobs:
           # Azure subscriptionId
           subscription-id: 972b29e5-b4b2-4f43-b814-02879737840d
 
+
+            # 🔎 Yaha Debug step dalna hai
+      - name: Debug ARM Vars
+        run: |
+          echo "ARM_CLIENT_ID=$ARM_CLIENT_ID"
+          echo "ARM_TENANT_ID=$ARM_TENANT_ID"
+          echo "ARM_SUBSCRIPTION_ID=$ARM_SUBSCRIPTION_ID"
+          echo "ARM_USE_OIDC=$ARM_USE_OIDC"
+
       - name: Terraform fmt
         id: fmt
         run: terraform fmt -check
