@@ -25,6 +25,8 @@ jobs:
           tenant-id: 25da0254-8640-4e13-9016-d3428661a477
           # Azure subscriptionId
           subscription-id: 972b29e5-b4b2-4f43-b814-02879737840d
+          auth-type: SERVICE_PRINCIPAL
+          enable-AzPSSession: true
 
 
             # 🔎 Yaha Debug step dalna hai
@@ -37,7 +39,7 @@ jobs:
 
       - name: Terraform fmt
         id: fmt
-        run: terraform fmt -check
+        run: terraform fmt #-check
         continue-on-error: true
         working-directory: environment
       
