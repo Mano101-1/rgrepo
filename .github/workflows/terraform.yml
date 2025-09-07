@@ -48,6 +48,7 @@ jobs:
       
   apply:
     runs-on: self-hosted
+    needs: init-plan-fmt
     environment: dev
     steps:      
       - name: Checkout
